@@ -14,7 +14,6 @@ import {
 } from "firebase/auth";
 
 const auth = getAuth();
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -39,6 +38,7 @@ export default new Vuex.Store({
     fnRegisterUser({ commit }, payload) {
       createUserWithEmailAndPassword(auth, payload.pEmail, payload.pPassword)
         .then((pUserInfo) => {
+          // pUserInfo는 파이어베이스 메소드를 통해서 요청받아온 결과값
           commit("fnSetUser", {
             email: pUserInfo.user.email,
           });
